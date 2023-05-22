@@ -3,10 +3,21 @@ import "../../assets/styles/css/header.css"
 import "../../assets/styles/css/base.css"
 import "../../assets/styles/css/main.css"
 import "../../assets/styles/css/footer.css"
+import "../../assets/styles/css/overlay-menu.css"
 
 import React from "react"
 
+//burger-bar
+import { Link } from 'react-router-dom'; 
+
 const Product = () => {
+
+	function openNav() {
+		document.getElementById("overlay-menu").style.height = "100%";
+	}
+	function closeNav() {
+		document.getElementById("overlay-menu").style.height = "0%";
+	}
 
 	function search_product() {
 		let input = document.getElementById('searchbar').value
@@ -40,10 +51,7 @@ const Product = () => {
 							alt="img-logo" />
 					</div>
 					<div className="content-header-box-right">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-							<path
-								d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-						</svg>
+					<i className="fa-solid fa-bars" onClick={() => openNav()}></i>
 					</div>
 				</div>
 				<h1 className="content-header-title">MENU</h1>
@@ -160,6 +168,17 @@ const Product = () => {
 						<p>Couvee - Code0Bug</p>
 					</div>
 				</div>
+			</div>
+			<div className="overlay" id="overlay-menu">
+				<a href="javascript:void(0)" className="closebtn" onClick={() => closeNav()}>&times;</a>
+
+				<nav className="overlay-menu">
+					<Link to="/"> HOMEPAGE </Link>
+					<Link to="/Product">MENU</Link>
+					<Link to="/">LOGIN</Link>
+					<Link to="/">REGISTER</Link>
+					<Link to="/">CONTACT</Link>
+				</nav>
 			</div>
 		</React.Fragment>
 	)
