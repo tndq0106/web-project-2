@@ -24,6 +24,8 @@ import Img14 from "../../assets/img/bag.jpg"
 import Img15 from "../../assets/img/honey-lemonade.jpg"
 import Img16 from "../../assets/img/caramel-macciato.jpg"
 
+//burger-bar
+import { Link } from 'react-router-dom'; 
 
 const Home = () => {
 
@@ -238,11 +240,11 @@ const Home = () => {
 				<a href="javascript:void(0)" className="closebtn" onClick={() => closeNav()}>&times;</a>
 
 				<nav className="overlay-menu">
-					<a href=""> HOMEPAGE </a>
-					<a href="">STORY</a>
-					<a href="">MENU</a>
-					<a href="">LOCATIONS</a>
-					<a href="">CONTACT</a>
+					<Link to="/"> HOMEPAGE </Link>
+					<Link to="/Product">MENU</Link>
+					<Link to="/">LOGIN</Link>
+					<Link to="/">REGISTER</Link>
+					<Link to="/">CONTACT</Link>
 				</nav>
 			</div>
 		</React.Fragment>
