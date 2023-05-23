@@ -9,11 +9,7 @@ const ProductsController = require("../app/controllers/ProductsController");
 router.post("/create", ProductsController.create);
 
 // post list producst with pagination
-router.post(
-  "/listProducts",
-
-  ProductsController.getListWithPaginate
-);
+router.post("/listProducts", ProductsController.getListWithPaginate);
 
 // get detail products
 router.get("/detail/:id", ProductsController.getDetail);

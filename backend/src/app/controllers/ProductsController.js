@@ -8,7 +8,7 @@ class ProductsController {
       const result = await products.save();
       res.json({
         retCode: 0,
-        retText: "Tạo thành công",
+        retText: "Create successfully",
         retData: result,
       });
     } catch (error) {

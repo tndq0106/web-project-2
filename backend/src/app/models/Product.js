@@ -8,11 +8,8 @@ const Product = new Schema(
     name: {
       type: String,
     },
-    description: {
-      type: String,
-    },
     image: {
-      type: Array,
+      type: String,
     },
     price: {
       type: Number,
