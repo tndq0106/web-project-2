@@ -18,12 +18,6 @@ const User = new Schema({
   address: {
     type: String,
   },
-  codeActive: {
-    type: Number,
-  },
-  statusActive: {
-    type: Number,
-  },
   roles: [
     {
       type: mongoose.Schema.Types.ObjectId,
