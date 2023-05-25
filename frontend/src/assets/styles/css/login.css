@@ -5,6 +5,7 @@
   box-sizing: border-box;
   vertical-align: baseline;
   font-family: "M PLUS Rounded 1c", sans-serif;
+  
 }
 
 h2 {
@@ -64,7 +65,7 @@ a:hover {
   width: 450px;
 }
 
-body {
+/* body {
   background: url("../../img/hero-bg1.jpg") repeat 0;
   background-position: center center;
   background-size: cover;
@@ -78,6 +79,7 @@ body {
 body p {
   font-size: small;
 }
+*/
 
 .form-box {
   display: flex;

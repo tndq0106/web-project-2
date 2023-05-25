@@ -280,8 +280,8 @@ const Product = () => {
         <nav className="overlay-menu">
           <Link to="/"> HOMEPAGE </Link>
           <Link to="/Product">MENU</Link>
-          <Link to="/">LOGIN</Link>
-          <Link to="/">REGISTER</Link>
+          <Link to="/Login">LOGIN</Link>
+          <Link to="/Register">REGISTER</Link>
           <Link to="/">CONTACT</Link>
         </nav>
       </div>
@@ -316,8 +316,10 @@ const Product = () => {
           })} */}
         </ul>
         <div className="checkOut">
+          <div className="total-text" >Total</div>
           <div className="total">0</div>
-          <div className="closeShopping">Checkout</div>
+          <div><Link to="/">Checkout</Link></div>
+          <div className="closeShopping">Close</div>
         </div>
       </div>
     </React.Fragment>

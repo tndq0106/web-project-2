@@ -61,7 +61,7 @@ const RegisterPage = () => {
 
   return (
     <div className="form-box">
-      <h1>Signup</h1>
+      <h1>Sign Up</h1>
       <Form
         form={form}
         onFinish={onFinishSignUp}

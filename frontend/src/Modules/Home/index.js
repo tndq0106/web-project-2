@@ -257,8 +257,8 @@ const Home = () => {
         <nav className="overlay-menu">
           <Link to="/"> HOMEPAGE </Link>
           <Link to="/Product">MENU</Link>
-          <Link to="/">LOGIN</Link>
-          <Link to="/">REGISTER</Link>
+          <Link to="/Login">LOGIN</Link>
+          <Link to="/Register">REGISTER</Link>
           <Link to="/">CONTACT</Link>
         </nav>
       </div>
