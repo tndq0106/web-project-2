@@ -27,10 +27,29 @@ export const cartReducer = (state = initialState, action) => {
       }
 
     case DELETE_ITEM:
-      return {
-        ...state,
-        numOfItems: state.numOfItems - 1,
-      };
+      const itemExistDelete = state.dataCart?.find(
+        (item) => item?._id === action.payload._id
+      );
+
+      if (itemExistDelete?.quantity === 1) {
+        const filterItem = state.dataCart.filter(
+          (item) => item?._id !== action.payload._id
+        );
+        return {
+          dataCart: filterItem,
+        };
+      } else {
+        const list = state.dataCart;
+        const index = list.findIndex(
+          (item) => item?._id === action.payload._id
+        );
+        list[index].quantity -= 1;
+        list[index].totalPrice -= action.payload.price;
+        return {
+          dataCart: [...state.dataCart],
+        };
+      }
+
     default:
       return state;
   }

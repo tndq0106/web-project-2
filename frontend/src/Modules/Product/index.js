@@ -93,11 +93,15 @@ const Product = () => {
     const listPrice = dataCart?.map((item) => {
       return item.totalPrice;
     });
-    const res = listPrice.reduce((total, currentValue) => {
-      return total + currentValue;
-    });
-    return res;
-    // console.log("listPrice", listPrice);
+    if (listPrice?.length === 0) {
+      return 0;
+    } else {
+      const res =
+        listPrice.reduce((total, currentValue) => {
+          return total + currentValue;
+        }) ?? 0;
+      return res;
+    }
   };
 
   return (
@@ -274,8 +278,24 @@ const Product = () => {
                 <div>{value.name}</div>
                 <div>{value.totalPrice.toLocaleString()}</div>
                 <div>
-                  <button>-</button>
-                  <div class="count">{value.quantity}</div>
+                  <button
+                    onClick={() => {
+                      const itemExistDelete = dataCart?.find(
+                        (item) => item?._id === value._id
+                      );
+                      if (
+                        itemExistDelete &&
+                        Object.keys(itemExistDelete).length > 0
+                      ) {
+                        dispatch(deleteItem(value));
+                      } else {
+                        return;
+                      }
+                    }}
+                  >
+                    -
+                  </button>
+                  <div className="count">{value.quantity}</div>
                   <button
                     onClick={() => {
                       dispatch(addItem(value));
