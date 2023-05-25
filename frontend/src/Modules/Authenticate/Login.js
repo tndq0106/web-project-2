@@ -27,6 +27,7 @@ const LoginPage = () => {
           description: data?.retText,
           duration: 2,
         });
+        localStorage.setItem("userInfo", JSON.stringify(data.retData));
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
