@@ -110,12 +110,16 @@ form .field {
   flex-direction: column;
   align-items: baseline;
   gap: 8px;
+  width: 400px;
 }
 form .field input {
   width: 100%;
   padding: 5px;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 18px;
 }
-form input[type=submit] {
+form input[type="submit"] {
   background-color: #c8a27a;
   padding: 10px 165px;
   color: white;
@@ -131,4 +135,4 @@ form input[type=submit] {
   width: 100%;
   text-transform: capitalize;
   font-weight: 500;
-}/*# sourceMappingURL=login.css.map */
+} /*# sourceMappingURL=login.css.map */
