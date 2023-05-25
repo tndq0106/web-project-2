@@ -65,21 +65,6 @@ a:hover {
   width: 450px;
 }
 
-/* body {
-  background: url("../../img/hero-bg1.jpg") repeat 0;
-  background-position: center center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-}
-body p {
-  font-size: small;
-}
-*/
 
 .form-box {
   display: flex;
