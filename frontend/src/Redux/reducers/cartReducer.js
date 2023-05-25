@@ -11,6 +11,12 @@ export const cartReducer = (state = initialState, action) => {
         (item) => item?._id === action.payload._id
       );
       if (itemExist && Object.keys(itemExist).length > 0) {
+        const list = state.dataCart;
+        const index = list.findIndex(
+          (item) => item?._id === action.payload._id
+        );
+        list[index].quantity += 1;
+        list[index].totalPrice += action.payload.price;
         return {
           dataCart: [...state.dataCart],
         };

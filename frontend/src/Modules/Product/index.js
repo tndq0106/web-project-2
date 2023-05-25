@@ -21,8 +21,8 @@ const Product = () => {
   const [listProducts, setListProducts] = useState([]);
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  console.log("store", state);
+  const { dataCart } = useSelector((state) => state);
+  console.log("store", dataCart);
 
   useEffect(() => {
     fetchGetListProducts();
@@ -41,7 +41,14 @@ const Product = () => {
       );
       if (data.retCode === 0) {
         const list = data.retData.products.reverse();
-        setListProducts(list);
+        const listProducts = list.map((item) => {
+          return {
+            ...item,
+            quantity: 1,
+            totalPrice: item.price,
+          };
+        });
+        setListProducts(listProducts);
       }
     } catch (err) {
       console.log("FETCH FAIL!", err);
@@ -82,6 +89,17 @@ const Product = () => {
     body.classList.remove("active");
   });
 
+  const handleTotalMoney = () => {
+    const listPrice = dataCart?.map((item) => {
+      return item.totalPrice;
+    });
+    const res = listPrice.reduce((total, currentValue) => {
+      return total + currentValue;
+    });
+    return res;
+    // console.log("listPrice", listPrice);
+  };
+
   return (
     <React.Fragment>
       <div className="content-header">
@@ -114,7 +132,7 @@ const Product = () => {
               <div>
                 <CartIcon />
               </div>
-              <span className="quantity">0</span>
+              <span className="quantity">{dataCart?.length}</span>
             </div>
           </div>
         </div>
@@ -246,9 +264,32 @@ const Product = () => {
       </div>
       <div className="card">
         <h1>Cart</h1>
-        <ul className="listCard"></ul>
+        <ul className="listCard">
+          {dataCart?.map((value, index) => {
+            return (
+              <li key={index}>
+                <div>
+                  <img src={value.image} alt="" />
+                </div>
+                <div>{value.name}</div>
+                <div>{value.totalPrice.toLocaleString()}</div>
+                <div>
+                  <button>-</button>
+                  <div class="count">{value.quantity}</div>
+                  <button
+                    onClick={() => {
+                      dispatch(addItem(value));
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
         <div className="checkOut">
-          <div className="total">0</div>
+          <div className="total">{handleTotalMoney()}</div>
           <div className="closeShopping">Checkout</div>
         </div>
       </div>
