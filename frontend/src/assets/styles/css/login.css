@@ -65,14 +65,14 @@ a:hover {
 }
 
 body {
-  background: url("../../img/hero-bg1.jpg") repeat 0;
+  /* background: url("../../img/hero-bg1.jpg") repeat 0;
   background-position: center center;
   background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   font-size: 14px;
 }
 body p {

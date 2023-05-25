@@ -13,10 +13,16 @@ import { Link } from "react-router-dom";
 
 // @svg
 import { CartIcon } from "../../assets/svg";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem, deleteItem } from "../../Redux/actions/cartAction";
 
 const Product = () => {
   const [loading, setLoading] = useState(false);
   const [listProducts, setListProducts] = useState([]);
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  console.log("store", state);
 
   useEffect(() => {
     fetchGetListProducts();
@@ -67,10 +73,6 @@ const Product = () => {
   const openShopping = document.querySelector(".shopping");
   const closeShopping = document.querySelector(".closeShopping");
   const body = document.querySelector("body");
-  let list = document.querySelector(".list");
-  let listCard = document.querySelector(".listCard");
-  let total = document.querySelector(".total");
-  let quantity = document.querySelector(".quantity");
 
   openShopping?.addEventListener("click", () => {
     body.classList.add("active");
@@ -80,54 +82,6 @@ const Product = () => {
     body.classList.remove("active");
   });
 
-  let listCards = [];
-  function addToCard(key) {
-    if (listCards[key] == null) {
-      // copy product form list to list card
-      listCards[key] = JSON.parse(JSON.stringify(listProducts[key]));
-      listCards[key].quantity = 1;
-    }
-    console.log("listCards", listCards);
-    reloadCard();
-  }
-  function reloadCard() {
-    listCard.innerHTML = "";
-    let count = 0;
-    let totalPrice = 0;
-    listCards.forEach((value, key) => {
-      totalPrice = totalPrice + value.price;
-      count = count + value.quantity;
-      if (value != null) {
-        let newDiv = document.createElement("li");
-        newDiv.innerHTML = `
-                <div><img src="${value.image}"/></div>
-                <div>${value.name}</div>
-                <div>${value.price.toLocaleString()}</div>
-                <div>
-                   <button onclick="changeQuantity(${key}, ${
-          value.quantity - 1
-        })">-</button>
-                    <div class="count">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${
-          value.quantity + 1
-        })">+</button>
-                </div>`;
-        listCard.appendChild(newDiv);
-      }
-    });
-    total.innerText = totalPrice.toLocaleString();
-    quantity.innerText = count;
-  } //changeQuantity(${key}, ${value.quantity - 1})
-  function changeQuantity(key, quantity) {
-    // if (quantity == 0) {
-    //   delete listCards[key];
-    // } else {
-    //   listCards[key].quantity = quantity;
-    //   listCards[key].price = quantity * listProducts[key].price;
-    // }
-    // reloadCard();
-    console.log("hihi");
-  }
   return (
     <React.Fragment>
       <div className="content-header">
@@ -212,7 +166,12 @@ const Product = () => {
                     <div className="price">
                       <p className="product-item-price">{item?.price}$</p>
                     </div>
-                    <div className="cart" onClick={() => addToCard(index)}>
+                    <div
+                      className="cart"
+                      onClick={() => {
+                        dispatch(addItem());
+                      }}
+                    >
                       <a
                         href="#"
                         className="fa-solid fa-cart-shopping"
@@ -287,34 +246,7 @@ const Product = () => {
       </div>
       <div className="card">
         <h1>Cart</h1>
-        <ul className="listCard">
-          {/* {cartList?.map((value, index) => {
-            return (
-              <div className="listCard-item" key={index}>
-                <div className="listCard-item-img">
-                  <img src={value?.image} className="card-img" />
-                </div>
-                <div className="listCard-item-name">
-                  <h4>{value?.name}</h4>
-                </div>
-                <div className="listCard-item-price">
-                  <h4>{value?.totalPrice}</h4>
-                </div>
-                <div className="listCard-item-price">
-                  <h4>x{value?.totalItem}</h4>
-                </div>
-                <div className="listCard-item-quantity">
-                  <button onClick={() => handleIncrease(value, "increase")}>
-                    +
-                  </button>
-                  <button onClick={() => handleDecrease(value, "decrease")}>
-                    -
-                  </button>
-                </div>
-              </div>
-            );
-          })} */}
-        </ul>
+        <ul className="listCard"></ul>
         <div className="checkOut">
           <div className="total">0</div>
           <div className="closeShopping">Checkout</div>
