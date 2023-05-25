@@ -3,10 +3,10 @@ import "../../assets/styles/css/login.css";
 
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // @antd
 import { Button, notification, Form, Modal, Input } from "antd";
-import { Link } from "react-router-dom";
 
 const phoneRegex = /([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/;
 
@@ -34,7 +34,7 @@ const RegisterPage = () => {
       } else {
         notification.error({
           message: "Fail",
-          description: "Login unsuccessfully!",
+          description: "Register unsuccessfully!",
           duration: 2,
         });
       }
