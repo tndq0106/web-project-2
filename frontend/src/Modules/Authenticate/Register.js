@@ -2,6 +2,7 @@ import "../../assets/styles/css/base.css";
 import "../../assets/styles/css/login.css";
 
 import React, { useState } from "react";
+import axios from "axios";
 
 // @antd
 import { Button, notification, Form, Modal, Input } from "antd";
@@ -15,7 +16,33 @@ const RegisterPage = () => {
   const [loadingSignUp, setLoadingSignUp] = useState(false);
 
   const onFinishSignUp = async (value) => {
-    console.log("value", value);
+    const { confirmPassword, ...rest } = value || {};
+    try {
+      setLoadingSignUp(true);
+      const { data } = await axios.post("http://localhost:3002/auth/signup", {
+        ...rest,
+      });
+      if (data.retCode === 0) {
+        notification.success({
+          message: "Successfully",
+          description: data?.retText,
+          duration: 2,
+        });
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        notification.error({
+          message: "Fail",
+          description: "Login unsuccessfully!",
+          duration: 2,
+        });
+      }
+    } catch (err) {
+      console.log("FETCH FAIL!", err);
+    } finally {
+      setLoadingSignUp(false);
+    }
   };
 
   const onFieldsChangeSignUp = () => {
