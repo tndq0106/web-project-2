@@ -1,14 +1,16 @@
 import { ADD_ITEM, DELETE_ITEM } from "../actionTypes/actionTypes";
 
-const addItem = () => {
+const addItem = (payload) => {
   return {
     type: ADD_ITEM,
+    payload,
   };
 };
 
-const deleteItem = () => {
+const deleteItem = (payload) => {
   return {
     type: DELETE_ITEM,
+    payload,
   };
 };
 

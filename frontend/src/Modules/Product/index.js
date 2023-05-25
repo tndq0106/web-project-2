@@ -169,7 +169,7 @@ const Product = () => {
                     <div
                       className="cart"
                       onClick={() => {
-                        dispatch(addItem());
+                        dispatch(addItem(item));
                       }}
                     >
                       <a
