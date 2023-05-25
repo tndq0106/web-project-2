@@ -289,7 +289,7 @@ const Product = () => {
           })}
         </ul>
         <div className="checkOut">
-          <div className="total">0</div>
+          <div className="total">{handleTotalMoney()}</div>
           <div className="closeShopping">Checkout</div>
         </div>
       </div>
