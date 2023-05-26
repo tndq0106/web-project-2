@@ -20,9 +20,11 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const [listProducts, setListProducts] = useState([]);
 
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
   const dispatch = useDispatch();
   const { dataCart } = useSelector((state) => state);
-  console.log("store", dataCart);
+  // console.log("store", dataCart);
 
   useEffect(() => {
     fetchGetListProducts();
@@ -129,6 +131,30 @@ const Product = () => {
             />
           </div>
           <div className="content-header-box-right">
+            {userInfo && Object.keys(userInfo)?.length > 0 ? (
+              <p
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  localStorage.removeItem("userInfo");
+                  setTimeout(() => {
+                    window.location.href = "/login";
+                  }, 1000);
+                }}
+              >
+                Logout
+              </p>
+            ) : (
+              <p
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => (window.location.href = "/login")}
+              >
+                Login
+              </p>
+            )}
             <div className="burger">
               <i className="fa-solid fa-bars" onClick={() => openNav()}></i>
             </div>

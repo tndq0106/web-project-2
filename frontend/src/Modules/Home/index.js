@@ -28,6 +28,10 @@ import Img16 from "../../assets/img/caramel-macciato.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  console.log("userInfo", userInfo);
+
   function openNav() {
     document.getElementById("overlay-menu").style.height = "100%";
   }
@@ -42,6 +46,30 @@ const Home = () => {
           <div className="nav">
             <i className="fa-brands fa-instagram"></i>
             <img src={Img1} alt="" />
+            {userInfo && Object.keys(userInfo)?.length > 0 ? (
+              <p
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  localStorage.removeItem("userInfo");
+                  setTimeout(() => {
+                    window.location.href = "/login";
+                  }, 1000);
+                }}
+              >
+                Logout
+              </p>
+            ) : (
+              <p
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => (window.location.href = "/login")}
+              >
+                Login
+              </p>
+            )}
             <i className="fa-solid fa-bars" onClick={() => openNav()}></i>
           </div>
         </div>
