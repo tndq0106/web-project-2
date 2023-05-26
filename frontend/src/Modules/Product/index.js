@@ -201,7 +201,7 @@ const Product = () => {
             <div className="row">
               {listProducts?.map((item, index) => {
                 return (
-                  <div className="col-4" key={`${index}-${item?._id}`}>
+                  <div className="col-4 p-2" key={`${index}-${item?._id}`}>
                     <div className="content-body-item-product">
                       <img
                         src={item?.image}
