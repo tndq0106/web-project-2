@@ -198,38 +198,39 @@ const Product = () => {
           </div>
 
           <div className="content-body-item">
-            {listProducts?.map((item, index) => {
-              return (
-                <div
-                  className="content-body-item-product"
-                  key={`${index}-${item?._id}`}
-                >
-                  <img
-                    src={item?.image}
-                    alt="product"
-                    className="product-item"
-                  />
-                  <p className="product-item-title">{item?.name}</p>
-                  <div className="product-item-content">
-                    <div className="price">
-                      <p className="product-item-price">{item?.price}$</p>
-                    </div>
-                    <div
-                      className="cart"
-                      onClick={() => {
-                        dispatch(addItem(item));
-                      }}
-                    >
-                      <a
-                        href="#"
-                        className="fa-solid fa-cart-shopping"
-                        style={{ color: "black" }}
-                      ></a>
+            <div className="row">
+              {listProducts?.map((item, index) => {
+                return (
+                  <div className="col-4" key={`${index}-${item?._id}`}>
+                    <div className="content-body-item-product">
+                      <img
+                        src={item?.image}
+                        alt="product"
+                        className="product-item"
+                      />
+                      <p className="product-item-title">{item?.name}</p>
+                      <div className="product-item-content">
+                        <div className="price">
+                          <p className="product-item-price">{item?.price}$</p>
+                        </div>
+                        <div
+                          className="cart"
+                          onClick={() => {
+                            dispatch(addItem(item));
+                          }}
+                        >
+                          <a
+                            href="#"
+                            className="fa-solid fa-cart-shopping"
+                            style={{ color: "black" }}
+                          ></a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
