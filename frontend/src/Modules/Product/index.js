@@ -127,14 +127,17 @@ const Product = () => {
           <div className="content-header-box-center">
             <img
               src="https://www.couvee.co.id/wp-content/themes/couvee/assets/images/logo-text.png"
-              alt="img-logo"
+              alt="img-logo" 
+              style={{
+                cursor: "pointer", paddingLeft:"220px",
+              }}
             />
           </div>
           <div className="content-header-box-right">
             {userInfo && Object.keys(userInfo)?.length > 0 ? (
               <p
                 style={{
-                  cursor: "pointer",
+                  cursor: "pointer", paddingTop: "20px", paddingRight: "130px"
                 }}
                 onClick={() => {
                   localStorage.removeItem("userInfo");
@@ -148,7 +151,7 @@ const Product = () => {
             ) : (
               <p
                 style={{
-                  cursor: "pointer",
+                  cursor: "pointer", paddingTop: "20px", paddingRight: "130px"
                 }}
                 onClick={() => (window.location.href = "/login")}
               >
@@ -336,8 +339,12 @@ const Product = () => {
           })}
         </ul>
         <div className="checkOut">
+        <div className="">Total</div>
           <div className="total">{handleTotalMoney()}</div>
-          <div className="closeShopping">Checkout</div>
+          <div className="closeShopping">Close</div>
+          <div><Link to="/">Checkout</Link></div>
+          
+        
         </div>
       </div>
     </React.Fragment>

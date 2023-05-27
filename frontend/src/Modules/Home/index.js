@@ -45,11 +45,13 @@ const Home = () => {
         <div className="wrapper">
           <div className="nav">
             <i className="fa-brands fa-instagram"></i>
-            <img src={Img1} alt="" />
+            <img src={Img1} alt="" style={{
+                  cursor: "pointer", marginLeft:"280px", 
+                }}/>
             {userInfo && Object.keys(userInfo)?.length > 0 ? (
               <p
                 style={{
-                  cursor: "pointer",
+                  cursor: "pointer", paddingTop:"20px"
                 }}
                 onClick={() => {
                   localStorage.removeItem("userInfo");
@@ -63,7 +65,7 @@ const Home = () => {
             ) : (
               <p
                 style={{
-                  cursor: "pointer",
+                  cursor: "pointer", paddingTop:"20px"
                 }}
                 onClick={() => (window.location.href = "/login")}
               >
