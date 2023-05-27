@@ -9,6 +9,7 @@ import HomePage from "./Modules/Home";
 import ProductPage from "./Modules/Product/";
 import LoginPage from "./Modules/Authenticate/Login";
 import RegisterPage from "./Modules/Authenticate/Register";
+import Checkout from "./Modules/Checkout";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/checkout" element={<Checkout />} />
+          {/* <Route path="/checkout-detail" element={<RegisterPage />} /> */}
         </Routes>
       </Router>
     </React.Fragment>

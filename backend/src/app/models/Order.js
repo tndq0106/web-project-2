@@ -11,9 +11,9 @@ const Order = new Schema(
     infoOrder: {
       type: Object,
     },
-    // cartId: {
-    //   type: String,
-    // },
+    listCart: {
+      type: Array,
+    },
     // statusOrder: {
     //   type: Number,
     // },

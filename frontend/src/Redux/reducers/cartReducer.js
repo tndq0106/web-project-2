@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM } from "../actionTypes/actionTypes";
+import { ADD_ITEM, DELETE_ITEM, RESET_ITEM } from "../actionTypes/actionTypes";
 
 const initialState = {
   dataCart: [],
@@ -49,6 +49,9 @@ export const cartReducer = (state = initialState, action) => {
           dataCart: [...state.dataCart],
         };
       }
+
+    case RESET_ITEM:
+      return initialState;
 
     default:
       return state;

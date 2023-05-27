@@ -127,9 +127,10 @@ const Product = () => {
           <div className="content-header-box-center">
             <img
               src="https://www.couvee.co.id/wp-content/themes/couvee/assets/images/logo-text.png"
-              alt="img-logo" 
+              alt="img-logo"
               style={{
-                cursor: "pointer", paddingLeft:"220px",
+                cursor: "pointer",
+                paddingLeft: "220px",
               }}
             />
           </div>
@@ -137,7 +138,9 @@ const Product = () => {
             {userInfo && Object.keys(userInfo)?.length > 0 ? (
               <p
                 style={{
-                  cursor: "pointer", paddingTop: "20px", paddingRight: "130px"
+                  cursor: "pointer",
+                  paddingTop: "20px",
+                  paddingRight: "130px",
                 }}
                 onClick={() => {
                   localStorage.removeItem("userInfo");
@@ -151,7 +154,9 @@ const Product = () => {
             ) : (
               <p
                 style={{
-                  cursor: "pointer", paddingTop: "20px", paddingRight: "130px"
+                  cursor: "pointer",
+                  paddingTop: "20px",
+                  paddingRight: "130px",
                 }}
                 onClick={() => (window.location.href = "/login")}
               >
@@ -339,12 +344,21 @@ const Product = () => {
           })}
         </ul>
         <div className="checkOut">
-        <div className="">Total</div>
+          <div className="">Total</div>
           <div className="total">{handleTotalMoney()}</div>
           <div className="closeShopping">Close</div>
-          <div><Link to="/">Checkout</Link></div>
-          
-        
+          <div
+            onClick={() => {
+              if (userInfo && Object.keys(userInfo)?.length > 0) {
+                window.location.href = "checkout";
+              } else {
+                window.location.href = "login";
+              }
+            }}
+          >
+            {/* <Link to="/checkout">Checkout</Link> */}
+            Checkout
+          </div>
         </div>
       </div>
     </React.Fragment>
