@@ -35,9 +35,14 @@ class ProductsController {
       maxPrice,
       minPrice,
       productText,
+      category,
     } = req.body;
 
     const filter = {};
+
+    if (category) {
+      Object.assign(filter, { category });
+    }
 
     if (gender) {
       Object.assign(filter, { gender });

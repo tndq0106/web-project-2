@@ -14,6 +14,9 @@ const Product = new Schema(
     price: {
       type: Number,
     },
+    category: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

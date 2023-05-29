@@ -19,6 +19,7 @@ import { addItem, deleteItem } from "../../Redux/actions/cartAction";
 const Product = () => {
   const [loading, setLoading] = useState(false);
   const [listProducts, setListProducts] = useState([]);
+  const [filter, setFilter] = useState("");
 
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -30,7 +31,7 @@ const Product = () => {
     fetchGetListProducts();
   }, []);
 
-  const fetchGetListProducts = async (keySearch = "") => {
+  const fetchGetListProducts = async (type = "") => {
     try {
       setLoading(true);
       const { data } = await axios.post(
@@ -38,7 +39,8 @@ const Product = () => {
         {
           page: 1,
           size: 10000,
-          productText: keySearch,
+          // productText: keySearch,
+          category: type,
         }
       );
       if (data.retCode === 0) {
@@ -188,19 +190,34 @@ const Product = () => {
 
         <div className="content-body-box">
           <div className="content-body-list">
-            <div className="content-body-list-item" href="#">
+            <div
+              className="content-body-list-item"
+              onClick={() => fetchGetListProducts("")}
+            >
               All
             </div>
-            <div className="content-body-list-item" href="#">
+            <div
+              className="content-body-list-item"
+              onClick={() => fetchGetListProducts("basic")}
+            >
               Basic
             </div>
-            <div className="content-body-list-item" href="#">
+            <div
+              className="content-body-list-item"
+              onClick={() => fetchGetListProducts("signature")}
+            >
               Signature
             </div>
-            <div className="content-body-list-item" href="#">
+            <div
+              className="content-body-list-item"
+              onClick={() => fetchGetListProducts("Flabored-Coffee")}
+            >
               Flabored Coffee
             </div>
-            <div className="content-body-list-item" href="#">
+            <div
+              className="content-body-list-item"
+              onClick={() => fetchGetListProducts("Non-coffee")}
+            >
               Non-coffee
             </div>
           </div>
