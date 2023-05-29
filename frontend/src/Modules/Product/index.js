@@ -198,13 +198,13 @@ const Product = () => {
             </div>
             <div
               className="content-body-list-item"
-              onClick={() => fetchGetListProducts("basic")}
+              onClick={() => fetchGetListProducts("Basic")}
             >
               Basic
             </div>
             <div
               className="content-body-list-item"
-              onClick={() => fetchGetListProducts("signature")}
+              onClick={() => fetchGetListProducts("Signature")}
             >
               Signature
             </div>
